@@ -1,21 +1,18 @@
 let playerChoice
 let computerChoice
+let playerSelection
+let computerSelection
+let playerScore = 0;
+let computerScore = 0;
+let playerWin
+let computerWin
 
-getPlayerChoice();
-console.log(playerChoice);
-
-getComputerChoice();
-console.log(computerChoice);
-
-playRound();
-
-playAgain();
+game();
 
 function getPlayerChoice() {
     let playerInput = prompt("Enter 'Rock', 'Paper', or 'Scissors' below:");
-    let editedInput
     if (playerInput) {
-        editedInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
+        let editedInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
         if (editedInput === "Rock") {
             playerChoice = editedInput;
         } else if(editedInput === "Paper") {
@@ -23,11 +20,11 @@ function getPlayerChoice() {
         } else if(editedInput === "Scissors") {
             playerChoice = editedInput;
         } else {
-            alert("Please enter only 'Rock', 'Paper', or 'Scissors'");
+            alert('Please enter only "Rock", "Paper", or "Scissors"');
             getPlayerChoice();
-        }
+        } 
     } else {
-        alert("You canceled. Please refresh the page to play again.")
+        alert("If you wish to end the game, please close the tab or cancel after the game is over.")
     }
     return playerChoice;
 }
@@ -56,6 +53,11 @@ function getComputerChoice() {
 }
 
 function playRound(computerSelection, playerSelection) {
+    getPlayerChoice();
+    getComputerChoice();
+    console.log(playerChoice);
+    console.log(computerChoice);
+
     computerSelection = computerChoice;
     playerSelection = playerChoice;
 
@@ -63,30 +65,55 @@ function playRound(computerSelection, playerSelection) {
         alert("It's a draw! Rock can't beat Rock!")
     } else if (computerChoice === 'Rock' && playerChoice === 'Paper') {
         alert("You win! Paper beats Rock!");
+        playerScore += 1;
     } else if (computerChoice === 'Rock' && playerChoice === 'Scissors') {
         alert("You lose! Rock beats Scissors");
+        computerScore += 1;
     } else if (computerChoice === 'Paper' && playerChoice === 'Rock') {
         alert("You lose! Paper beats Rock!");
+        computerScore += 1;
     } else if (computerChoice === 'Paper' && playerChoice === 'Paper') {
         alert("It's a draw! Paper can't beat Paper!");
     } else if (computerChoice === 'Paper' && playerChoice === 'Scissors') {
         alert("You win! Scissors beats Paper!");
+        playerScore += 1;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Rock') {
         alert("You win! Rock beats Scissors!");
+        playerScore += 1;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Paper') {
         alert("You lose! Scissors beats Paper!");
+        computerScore += 1;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Scissors') {
         alert("It's a draw! Scissors can't beat Scissors!");
     }
+    console.log("player: " + playerScore);
+    console.log("computer: " + computerScore);
 }
 
 function playAgain() {
     if (confirm("Play Again?") == true) {
-        getPlayerChoice();
-        getComputerChoice();
-        playRound();
-        playAgain();
+        location.reload();
     } else {
         alert("Ok, bye!")
+    }
+}
+
+function game() {
+    playerScore = 0;
+    computerScore = 0;
+    let userName = prompt('Welcome to Rock Paper Scissors! Please enter you name below:')
+    for (let i = 1; i <= 6; i++) {
+        if (i === 6 && computerScore > playerScore) {
+                alert(`The Computer wins ${computerScore}-${playerScore}!`)
+                playAgain();
+        } else if (i === 6 && computerScore < playerScore) {
+                alert(`${userName} wins ${playerScore}-${computerScore}!`)
+                playAgain();
+        } else if (i === 6 && computerScore === playerScore) {
+                alert(`It's a tie game with a score of ${computerScore}-${playerScore}!`)
+        }else {
+            console.log("i: " + i);
+            playRound();
+        }
     }
 }
