@@ -4,28 +4,46 @@ let playerSelection
 let computerSelection
 let playerScore = 0;
 let computerScore = 0;
+let rock;
+let paper;
+let scissors;
 
-game();
+let btn1 = document.getElementById("rock");
 
-function getPlayerChoice() {
-    let playerInput = prompt("Enter 'Rock', 'Paper', or 'Scissors' below:");
-    if (playerInput) {
-        let editedInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
-        if (editedInput === "Rock") {
-            playerChoice = editedInput;
-        } else if(editedInput === "Paper") {
-            playerChoice = editedInput;
-        } else if(editedInput === "Scissors") {
-            playerChoice = editedInput;
-        } else {
-            alert('Please enter only "Rock", "Paper", or "Scissors"');
-            getPlayerChoice();
-        } 
-    } else {
-        alert("If you wish to end the game, please close the tab or cancel after the game is over.")
-    }
-    return playerChoice;
-}
+let btn2 = document.getElementById("paper");
+
+let btn3 = document.getElementById("scissors");
+
+
+btn1.addEventListener('click', () => {
+    rock = true;
+    paper = false;
+    scissors = false;
+    playRound();
+});
+btn2.addEventListener('click', () => {
+    rock = false;
+    paper = true;
+    scissors = false;
+    playRound();
+});
+btn3.addEventListener('click', () => {
+    rock = false;
+    paper = false;
+    scissors = true;
+    playRound();
+});
+
+console.log(btn1);
+console.log(btn2);
+console.log(btn3);
+
+// game();
+
+// function getPlayerChoice() {
+
+//     return playerChoice;
+// }
 
 function getComputerChoice() {
     let computerChoices = [
@@ -51,8 +69,18 @@ function getComputerChoice() {
 }
 
 function playRound(computerSelection, playerSelection) {
-    getPlayerChoice();
+    // getPlayerChoice();
+
+    if (rock === true) {
+        playerChoice = 'Rock'
+    } else if (paper === true) {
+        playerChoice = 'Paper'
+    } else if (scissors === true) {
+        playerChoice = 'Scissors'
+    }
+
     getComputerChoice();
+
     console.log(playerChoice);
     console.log(computerChoice);
 
@@ -100,18 +128,18 @@ function game() {
     playerScore = 0;
     computerScore = 0;
     let userName = prompt('Welcome to Rock Paper Scissors! Please enter you name below:')
-    for (let i = 1; i <= 6; i++) {
-        if (i === 6 && computerScore > playerScore) {
-                alert(`The Computer wins ${computerScore}-${playerScore}!`)
-                playAgain();
-        } else if (i === 6 && computerScore < playerScore) {
-                alert(`${userName} wins ${playerScore}-${computerScore}!`)
-                playAgain();
-        } else if (i === 6 && computerScore === playerScore) {
-                alert(`It's a tie game with a score of ${computerScore}-${playerScore}!`)
-        }else {
-            console.log("i: " + i);
-            playRound();
-        }
-    }
+    // for (let i = 1; i <= 6; i++) {
+    //     if (i === 6 && computerScore > playerScore) {
+    //             alert(`The Computer wins ${computerScore}-${playerScore}!`)
+    //             playAgain();
+    //     } else if (i === 6 && computerScore < playerScore) {
+    //             alert(`${userName} wins ${playerScore}-${computerScore}!`)
+    //             playAgain();
+    //     } else if (i === 6 && computerScore === playerScore) {
+    //             alert(`It's a tie game with a score of ${computerScore}-${playerScore}!`)
+    //     }else {
+    //         console.log("i: " + i);
+    //         playRound();
+    //     }
+    // }
 }
