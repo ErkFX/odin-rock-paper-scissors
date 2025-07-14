@@ -34,10 +34,6 @@ btn3.addEventListener('click', () => {
     playRound();
 });
 
-console.log(btn1);
-console.log(btn2);
-console.log(btn3);
-
 // game();
 
 // function getPlayerChoice() {
@@ -88,32 +84,46 @@ function playRound(computerSelection, playerSelection) {
     playerSelection = playerChoice;
 
     if (computerChoice === 'Rock' && playerChoice === 'Rock') {
-        alert("It's a draw! Rock can't beat Rock!")
+        document.getElementById("resultText").innerHTML = "It's a draw! Rock can't beat Rock!";
     } else if (computerChoice === 'Rock' && playerChoice === 'Paper') {
-        alert("You win! Paper beats Rock!");
+        document.getElementById("resultText").innerHTML = "You win! Paper beats Rock!";
         playerScore += 1;
+        document.getElementById("player").innerHTML = playerScore;
     } else if (computerChoice === 'Rock' && playerChoice === 'Scissors') {
-        alert("You lose! Rock beats Scissors");
+        document.getElementById("resultText").innerHTML = "You lose! Rock beats Scissors";
         computerScore += 1;
+        document.getElementById("computer").innerHTML = computerScore;
     } else if (computerChoice === 'Paper' && playerChoice === 'Rock') {
-        alert("You lose! Paper beats Rock!");
+        document.getElementById("resultText").innerHTML = "You lose! Paper beats Rock!";
         computerScore += 1;
+        document.getElementById("computer").innerHTML = computerScore;
     } else if (computerChoice === 'Paper' && playerChoice === 'Paper') {
-        alert("It's a draw! Paper can't beat Paper!");
+        document.getElementById("resultText").innerHTML = "It's a draw! Paper can't beat Paper!";
     } else if (computerChoice === 'Paper' && playerChoice === 'Scissors') {
-        alert("You win! Scissors beats Paper!");
+        document.getElementById("resultText").innerHTML = "You win! Scissors beats Paper!";
         playerScore += 1;
+        document.getElementById("player").innerHTML = playerScore;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Rock') {
-        alert("You win! Rock beats Scissors!");
+        document.getElementById("resultText").innerHTML = "You win! Rock beats Scissors!";
         playerScore += 1;
+        document.getElementById("player").innerHTML = playerScore;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Paper') {
-        alert("You lose! Scissors beats Paper!");
+        document.getElementById("resultText").innerHTML = "You lose! Scissors beats Paper!";
         computerScore += 1;
+        document.getElementById("computer").innerHTML = computerScore;
     } else if (computerChoice === 'Scissors' && playerChoice === 'Scissors') {
-        alert("It's a draw! Scissors can't beat Scissors!");
+        document.getElementById("resultText").innerHTML = "It's a draw! Scissors can't beat Scissors!";
     }
     console.log("player: " + playerScore);
     console.log("computer: " + computerScore);
+
+    if (playerScore >= 5) {
+        setTimeout(function(){alert(`You win! The score was ${playerScore} - ${computerScore}!`);},250);
+        setTimeout(function(){playAgain();},250);
+    } else if (computerScore >= 5) {
+        setTimeout(function(){alert(`You lose! The score was ${playerScore} - ${computerScore}!`);},250);
+        setTimeout(function(){playAgain();},250);
+    }
 }
 
 function playAgain() {
@@ -121,25 +131,26 @@ function playAgain() {
         location.reload();
     } else {
         alert("Ok, bye!")
+        location.reload();
     }
 }
 
-function game() {
-    playerScore = 0;
-    computerScore = 0;
-    let userName = prompt('Welcome to Rock Paper Scissors! Please enter you name below:')
-    // for (let i = 1; i <= 6; i++) {
-    //     if (i === 6 && computerScore > playerScore) {
-    //             alert(`The Computer wins ${computerScore}-${playerScore}!`)
-    //             playAgain();
-    //     } else if (i === 6 && computerScore < playerScore) {
-    //             alert(`${userName} wins ${playerScore}-${computerScore}!`)
-    //             playAgain();
-    //     } else if (i === 6 && computerScore === playerScore) {
-    //             alert(`It's a tie game with a score of ${computerScore}-${playerScore}!`)
-    //     }else {
-    //         console.log("i: " + i);
-    //         playRound();
-    //     }
-    // }
-}
+// function game() {
+//     playerScore = 0;
+//     computerScore = 0;
+//     let userName = prompt('Welcome to Rock Paper Scissors! Please enter you name below:')
+//     for (let i = 1; i <= 6; i++) {
+//         if (i === 6 && computerScore > playerScore) {
+//                 alert(`The Computer wins ${computerScore}-${playerScore}!`)
+//                 playAgain();
+//         } else if (i === 6 && computerScore < playerScore) {
+//                 alert(`${userName} wins ${playerScore}-${computerScore}!`)
+//                 playAgain();
+//         } else if (i === 6 && computerScore === playerScore) {
+//                 alert(`It's a tie game with a score of ${computerScore}-${playerScore}!`)
+//         }else {
+//             console.log("i: " + i);
+//             playRound();
+//         }
+//     }
+// }

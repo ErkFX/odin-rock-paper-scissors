@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors!</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <div id="container">
+        <div id="buttons">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <div id="results">
+            <p id="resultText"></p>
+        </div>
+        <div id="scoreboard">
+            <div class="playerScoreboard">
+                <p class="playerTitle">Player:</p>
+                <p class="playerScore" id="player">0</p>
+            </div>
+            <div class="playerScoreboard">
+                <p class="playerTitle">Computer:</p>
+                <p class="playerScore" id="computer">0</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

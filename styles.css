@@ -1,3 +1,60 @@
-* {
+body {
     background-color: #111827;
+    color: gainsboro;
+    display: flex;
+    flex-direction: column;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin:100px;
+}
+
+button {
+    padding: 30px 75px;
+    font-size: 40px;
+}
+
+#results {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+}
+
+#resultText {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+}
+
+#scoreboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.playerScoreboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.playerTitle {
+    font-size: 50px;
+}
+
+.playerScore {
+    font-size: 100px;
+    margin-top: 20px;
 }
